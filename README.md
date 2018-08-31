@@ -14,7 +14,7 @@ docker run -d -p 5000:5000 --restart=always  -v /opt/data/registry:/var/lib/regi
 -v localfolder:containerfolder
 ~~~
 
-3. Modify /etc/default/docker, **clientside as will.**
+3. Modify /etc/default/docker, **clientside as well.**
 
 ~~~Docker
 DOCKER_OPTS="--dns 8.8.8.8 --dns 8.8.4.4 --insecure-registry [host ip]:[host port]"
