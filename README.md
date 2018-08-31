@@ -69,6 +69,32 @@ CMD [ "python3", "./app/tcp_master.py" ]
 docker build -t modbus_master .
 ~~~
 
-3. Tag Image to Private Registry
+3. Tag image to private registry
+
+4. Push image to private registry
+
+## Clientside
+1. Pull image from private registry
+
+2. **Maybe needed!!**
+Create and Modify daemon.json
+
+~~~script
+sudo touch /etc/docker/daemon.js
+sudo nano /etc/docker/daemon.js
+~~~
+
+Add folowing script
+
+~~~script
+{ "insecure-registries":["host ip:host port"] }
+~~~
+
+Then restart docker service
+
+~~~script
+sudo service docker restart
+
+~~~
 
 
