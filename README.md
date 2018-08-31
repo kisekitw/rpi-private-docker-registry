@@ -39,7 +39,7 @@ Then restart docker service
 ~~~script
 sudo service docker restart
 
-~~~script
+~~~
 
 
 ## Dockerize Python Program
