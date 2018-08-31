@@ -1,6 +1,6 @@
 # rpi-private-docker-registry
 
-## Coustruct Private Registry on Raspberry Pi 3+
+## Construct Private Registry on Raspberry Pi 3+
 
 1. Pull and run image from docker hub
 
@@ -17,7 +17,7 @@ docker run -d -p 5000:5000 --restart=always  -v /opt/data/registry:/var/lib/regi
 3. Modify /etc/default/docker, **clientside as will.**
 
 ~~~Docker
-DOCKER_OPTS="--dns 8.8.8.8 --dns 8.8.4.4 --insecure-registry 10.192.223.174:5000 --insecure-registry localhost:5000"
+DOCKER_OPTS="--dns 8.8.8.8 --dns 8.8.4.4 --insecure-registry [host ip]:[host port]"
 ~~~
 
 4. **Maybe needed!!**
@@ -31,7 +31,7 @@ sudo nano /etc/docker/daemon.js
 Add folowing script
 
 ~~~script
-{ "insecure-registries":["10.192.223.174:5000"] }
+{ "insecure-registries":["host ip:host port"] }
 ~~~
 
 Then restart docker service
