@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  watchtower:
+    container_name: 'watchtower'
+    image: talmai/rpi-watchtower:latest
+    command: 7 --debug -i 5
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+  
+  watchme:
+    container_name: 'watchme'
+    image: arc1registry:5000/modbus_master:latest
+    restart: always
