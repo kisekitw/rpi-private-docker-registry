@@ -115,10 +115,47 @@ sudo service docker restart
 ~~~
 
 ## Modify Registry IP
-1. Modify /etc/default/docker
+1. Modify /opt/data/registry/config.json
+
+~~~script
+{ 
+        "registryHost": "http://10.192.232.122:5000",
+        "registryDomainName": "10.192.232.122:5000"
+}
+~~~
+
+
+2. Modify /etc/default/docker
 
 ~~~Docker
 DOCKER_OPTS="--dns 8.8.8.8 --dns 8.8.4.4 --insecure-registry **[host ip]:[host port]**"
+~~~
+
+## Client Testing Setup
+
+1. Modify /etc/hosts
+Add mapping address
+
+ip aliashostname
+
+2. Create and Modify daemon.json
+
+~~~script
+sudo touch /etc/docker/daemon.json
+sudo nano /etc/docker/daemon.json
+~~~
+
+Add folowing script
+
+~~~script
+{ "insecure-registries":["host ip:host port"] }
+~~~
+
+Then restart docker service
+
+~~~script
+sudo service docker restart
+
 ~~~
 
 
