@@ -97,4 +97,12 @@ sudo service docker restart
 
 ~~~
 
+## Modify Registry IP
+1. Modify /etc/default/docker
+
+~~~Docker
+DOCKER_OPTS="--dns 8.8.8.8 --dns 8.8.4.4 --insecure-registry **[host ip]:[host port]**"
+~~~
+
+
 
