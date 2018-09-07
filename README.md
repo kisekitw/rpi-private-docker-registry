@@ -8,6 +8,20 @@
 docker run -d -p 5000:5000 --restart=always  -v /opt/data/registry:/var/lib/registry cblomart/rpi-registry
 ~~~
 
+~~~/opt/data/registry $ nano config.json
+
+{ 
+        "registryHost": "http://10.192.232.122:5000",
+        "registryDomainName": "10.192.232.122:5000"
+}
+
+
+~~~
+
+~~~/opt/hosts
+10.192.232.122  arc1registry
+~~~
+
 2. Mount local(on Raspberry Pi 3+) folder to container
 
 ~~~Docker instruction
@@ -24,14 +38,17 @@ DOCKER_OPTS="--dns 8.8.8.8 --dns 8.8.4.4 --insecure-registry [host ip]:[host por
 Create and Modify daemon.json
 
 ~~~script
-sudo touch /etc/docker/daemon.js
-sudo nano /etc/docker/daemon.js
+sudo touch /etc/docker/daemon.json
+sudo nano /etc/docker/daemon.json
 ~~~
 
 Add folowing script
 
 ~~~script
 { "insecure-registries":["host ip:host port"] }
+
+#{ "insecure-registries":["10.192.232.122:5000", "arc1registry:5000"] }
+
 ~~~
 
 Then restart docker service
@@ -80,8 +97,8 @@ docker build -t modbus_master .
 Create and Modify daemon.json
 
 ~~~script
-sudo touch /etc/docker/daemon.js
-sudo nano /etc/docker/daemon.js
+sudo touch /etc/docker/daemon.json
+sudo nano /etc/docker/daemon.json
 ~~~
 
 Add folowing script
